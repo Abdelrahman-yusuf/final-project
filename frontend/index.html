@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Processing Web App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Image Processing Web App</h1>
+            <p>Upload, process, and resize images with ease</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <h2>Upload New Image</h2>
+                <div class="upload-container">
+                    <input type="file" id="imageUpload" accept="image/*" class="file-input">
+                    <label for="imageUpload" class="upload-button">
+                        <span>Choose Image File</span>
+                    </label>
+                    <button id="uploadBtn" class="btn btn-primary" disabled>Upload Image</button>
+                </div>
+                <div id="uploadStatus" class="status-message"></div>
+            </section>
+
+            <!-- Image Gallery Section -->
+            <section class="gallery-section">
+                <h2>Image Gallery</h2>
+                <div id="imageGallery" class="image-gallery">
+                    <div class="loading">Loading images...</div>
+                </div>
+            </section>
+
+            <!-- Image Processing Section -->
+            <section class="processing-section">
+                <h2>Image Processing</h2>
+                <div class="processing-container">
+                    <div class="selected-image">
+                        <h3>Selected Image</h3>
+                        <div id="selectedImageContainer">
+                            <p>No image selected</p>
+                        </div>
+                    </div>
+                    
+                    <div class="processing-controls">
+                        <h3>Resize Settings</h3>
+                        <form id="processForm">
+                            <div class="form-group">
+                                <label for="width">Width (px):</label>
+                                <input type="number" id="width" min="1" max="5000" placeholder="Auto">
+                            </div>
+                            <div class="form-group">
+                                <label for="height">Height (px):</label>
+                                <input type="number" id="height" min="1" max="5000" placeholder="Auto">
+                            </div>
+                            <button type="submit" class="btn btn-primary" disabled>Process Image</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="processStatus" class="status-message"></div>
+            </section>
+
+            <!-- Processed Image Section -->
+            <section class="result-section">
+                <h2>Processed Image</h2>
+                <div id="processedImageContainer" class="processed-container">
+                    <p>No processed image yet</p>
+                </div>
+                <div id="apiUrlContainer" class="api-url-container" style="display: none;">
+                    <h3>API URL</h3>
+                    <div class="url-display">
+                        <input type="text" id="apiUrl" readonly>
+                        <button id="copyUrlBtn" class="btn btn-secondary">Copy URL</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Error Modal -->
+        <div id="errorModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3>Error</h3>
+                <p id="errorMessage"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
