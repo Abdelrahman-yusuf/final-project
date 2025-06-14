@@ -31,11 +31,13 @@ export const processImage = async (
     throw new Error('Filename is required');
   }
 
-  if (width && (width <= 0 || width > 5000)) {
+  // Check width validation - use typeof to catch 0 values
+  if (typeof width === 'number' && (width <= 0 || width > 5000)) {
     throw new Error('Width must be between 1 and 5000 pixels');
   }
 
-  if (height && (height <= 0 || height > 5000)) {
+  // Check height validation - use typeof to catch 0 values
+  if (typeof height === 'number' && (height <= 0 || height > 5000)) {
     throw new Error('Height must be between 1 and 5000 pixels');
   }
 

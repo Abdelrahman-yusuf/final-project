@@ -1,3 +1,2 @@
-declare const request: any;
-declare const app: any;
+export {};
 //# sourceMappingURL=endpointsSpec.d.ts.map
