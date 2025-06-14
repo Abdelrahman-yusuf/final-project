@@ -23,13 +23,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-/**
- * GET /api/images/process - Process an image with optional resizing
- * Query parameters:
- * - filename (required): Name of the image file
- * - width (optional): Desired width in pixels
- * - height (optional): Desired height in pixels
- */
+
 router.get('/process', async (req, res) => {
   try {
     const { filename, width, height } = req.query;
@@ -42,7 +36,6 @@ router.get('/process', async (req, res) => {
       });
     }
 
-    // Parse and validate dimensions
     let parsedWidth: number | undefined;
     let parsedHeight: number | undefined;
 
@@ -66,7 +59,6 @@ router.get('/process', async (req, res) => {
       }
     }
 
-    // Check for cached image first
     const cachedImage = await getCachedImage(filename, parsedWidth, parsedHeight);
     if (cachedImage) {
       return res.status(200).json({
@@ -80,7 +72,6 @@ router.get('/process', async (req, res) => {
       });
     }
 
-    // Process the image
     const processedInfo = await processImage({
       filename,
       width: parsedWidth,
@@ -99,7 +90,6 @@ router.get('/process', async (req, res) => {
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     
-    // Determine appropriate status code based on error type
     let statusCode = 500;
     if (errorMessage.includes('not found')) {
       statusCode = 404;
