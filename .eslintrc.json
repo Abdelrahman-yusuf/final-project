@@ -2,11 +2,12 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true,
+    "jasmine": true
   },
   "extends": [
-    "eslint:recommended",
-    "@typescript-eslint/recommended"
+    "eslint:recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -22,6 +23,28 @@
     "indent": ["error", 2],
     "linebreak-style": ["error", "windows"],
     "quotes": ["error", "single"],
-    "semi": ["error", "always"]
-  }
+    "semi": ["error", "always"],
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/explicit-function-return-type": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.spec.ts", "**/*.test.ts", "**/tests/**/*.ts"],
+      "env": {
+        "jest": true,
+        "jasmine": true
+      },
+      "globals": {
+        "describe": "readonly",
+        "it": "readonly",
+        "expect": "readonly",
+        "beforeAll": "readonly",
+        "beforeEach": "readonly",
+        "afterAll": "readonly",
+        "afterEach": "readonly",
+        "fail": "readonly"
+      }
+    }
+  ]
 }

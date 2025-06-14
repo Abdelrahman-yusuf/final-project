@@ -1,7 +1,8 @@
-import express from 'express';
-import multer from 'multer';
 import path from 'path';
 import fs from 'fs/promises';
+import express, { Express } from 'express';
+import multer from 'multer';
+// ... rest of your imports
 
 const router = express.Router();
 
